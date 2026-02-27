@@ -12,6 +12,14 @@ The rewrite is built as a Cargo workspace:
 - Rust toolchain (stable)
 - BLAS/LAPACK (default: system OpenBLAS via pkg-config). On macOS, Accelerate works; on Linux, OpenBLAS is typical.
 - `gfortran` (required by `ndarray-linalg` / BLAS linkage)
+- `pkg-config` (so OpenBLAS can be discovered)
+- `cmake` (required by `nlopt`)
+- BZip2 development headers (for `bzip2`/`bzip2-sys`)
+
+Suggested system packages:
+- Debian/Ubuntu: `sudo apt-get update && sudo apt-get install -y build-essential cmake gfortran pkg-config libopenblas-dev libbz2-dev`
+- macOS (Homebrew): `brew install gcc cmake pkg-config openblas bzip2`
+- macOS (Homebrew, if needed): `export PKG_CONFIG_PATH="/opt/homebrew/opt/openblas/lib/pkgconfig:/usr/local/opt/openblas/lib/pkgconfig"`
 
 ### Build
 ```bash

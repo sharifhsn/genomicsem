@@ -28,7 +28,7 @@ lavaan = { version = "0.1.0", path = "lavaan", default-features = false }
 ndarray = "0.16"
 ndarray-linalg = { version = "0.17", default-features = false }
 nlopt = "0.8.1"
-plotly = { version = "0.14.1", features = ["static_export_default"] }
+plotly = { version = "0.14.1" }
 polars = { version = "0.53", default-features = false, features = ["lazy", "csv"] }
 rand = "0.10.0"
 rand_distr = "0.6.0"

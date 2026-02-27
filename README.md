@@ -1,5 +1,7 @@
 # GenomicSEM (Rust Rewrite)
 
+**Warning:** This project is not yet thoroughly tested and may contain significant bugs. Please report any issues on GitHub.
+
 This repository is a Rust rewrite of the GenomicSEM R package. It mirrors the R API through a CLI and internal library modules, and it includes a Rust `lavaan`-style SEM engine scoped to GenomicSEM’s needs.
 
 The rewrite is built as a Cargo workspace:

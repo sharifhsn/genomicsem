@@ -1,0 +1,74 @@
+[workspace]
+members = ["lavaan"]
+
+[package]
+name = "genomicsem"
+version = "0.1.0"
+edition = "2024"
+description   = "GenomicSEM implementation in Rust"
+license       = "GPL-3.0-only"
+authors       = ["Sharif Haason"]
+repository    = "https://github.com/sharifhsn/GenomicSEM"
+homepage      = "https://github.com/sharifhsn/GenomicSEM"
+documentation = "https://github.com/sharifhsn/GenomicSEM#readme"
+readme        = "README.md"
+keywords      = ["genomics", "gwas", "statistics", "bioinformatics"]
+categories    = ["command-line-utilities", "science"]
+exclude       = ["data/*", "*.bed", "*.bim", "*.fam", "settings*.json", "test_rust.sh"]
+
+[dependencies]
+anyhow = "1.0"
+bed-reader = "1"
+blas-src = { version = "0.10", default-features = false, features = ["openblas"], optional = true }
+openblas-src = { version = "0.10", default-features = false, features = ["cblas", "lapacke"], optional = true }
+bzip2 = "0.4"
+clap = { version = "4", features = ["derive"] }
+flate2 = "1"
+lavaan = { version = "0.1.0", path = "lavaan", default-features = false }
+ndarray = "0.16"
+ndarray-linalg = { version = "0.17", default-features = false }
+nlopt = "0.8.1"
+plotly = { version = "0.14.1", features = ["static_export_default"] }
+polars = { version = "0.53", default-features = false, features = ["lazy", "csv"] }
+rand = "0.10.0"
+rand_distr = "0.6.0"
+rayon = "1"
+statrs = "0.18"
+tempfile = "3"
+thiserror = "2.0"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+[build-dependencies]
+vcpkg = "0.2"
+
+[profile.release]
+opt-level     = 3
+lto           = "thin"
+codegen-units = 1
+
+[features]
+# Default: use system OpenBLAS (via pkg-config).
+default = ["blas-openblas-system"]
+
+# Static OpenBLAS (build from source via openblas-src).
+blas-openblas-static = [
+  "blas-src",
+  "openblas-src",
+  "openblas-src/static",
+  "ndarray-linalg/blas",
+  "ndarray-linalg/openblas-static",
+  "lavaan/blas-openblas-static",
+]
+
+# System OpenBLAS (use pkg-config, no source build). Intended for CI or HPC.
+blas-openblas-system = [
+  "blas-src",
+  "openblas-src",
+  "openblas-src/system",
+  "ndarray-linalg/blas",
+  "ndarray-linalg/openblas-system",
+  "lavaan/blas-openblas-system",
+]
+
+[dev-dependencies]

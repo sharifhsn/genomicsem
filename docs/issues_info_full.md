@@ -1,0 +1,181 @@
+# Open Issues Summary (Full)
+Source: `gh issue list -S "is:issue is:open sort:comments-desc" --limit 100`
+## Issue List (All Open Issues)
+- **#100** Question about implied sample size (6 comment(s), updated 2025-02-07T22:57:25Z)
+  - Theme: General usage question or error.
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/100
+- **#129** commonfactor() and commonfactorGWAS() fail with "object 'Model1_Results'/'ReorderModel' not found" despite using Wiki example code (6 comment(s), updated 2026-01-13T01:31:23Z)
+  - Theme: commonfactor/commonfactorGWAS failures or performance.
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/129
+- **#91** Error in { :    task 135524 failed - "system is computationally singular: reciprocal condition number = 4.88787e-34" (5 comment(s), updated 2025-09-03T19:43:48Z)
+  - Theme: General usage question or error.
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/91
+- **#131** object 'ReorderModelnoSNP' not found with userGWAS (4 comment(s), updated 2026-01-26T10:58:28Z)
+  - Theme: userGWAS errors / dimension mismatches.
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/131
+- **#95** NA on model fitting (4 comment(s), updated 2025-01-08T15:46:14Z)
+  - Theme: General usage question or error.
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/95
+- **#72** LD scores files are no longer publicly available (3 comment(s), updated 2024-03-20T07:35:01Z)
+  - Theme: General usage question or error.
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/72
+- **#61** SNP effect size standardization in the sumstats_main.R file (3 comment(s), updated 2023-01-27T18:50:38Z)
+  - Theme: General usage question or error.
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/61
+- **#110** Very small p-values are set to zero by `read.table`, causing SNPs to be dropped in `commonfactorGWAS` (3 comment(s), updated 2026-02-19T23:07:16Z)
+  - Theme: P-value underflow or handling.
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/110
+- **#57** > hdl.cors <-  usermodel(covstruc = hdl.covstruct ,estimation = "DWLS",model = model) Error in solve.default(V_LD) :    system is computationally singular: reciprocal condition number = 4.24507e-35 (2 comment(s), updated 2025-07-19T08:50:31Z)
+  - Theme: usermodel issues (ordering, singularity, errors).
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/57
+- **#83** Error "system is computationally singular: reciprocal condition number = 1.19728e-24" (2 comment(s), updated 2025-07-19T08:45:08Z)
+  - Theme: General usage question or error.
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/83
+- **#108** User-Model GWAS (2 comment(s), updated 2025-07-19T08:59:34Z)
+  - Theme: General usage question or error.
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/108
+- **#53** Error of commonfactorGWAS (2 comment(s), updated 2024-12-08T17:00:41Z)
+  - Theme: commonfactor/commonfactorGWAS failures or performance.
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/53
+- **#67** Errors running common factor GWAS (2 comment(s), updated 2023-08-09T19:16:34Z)
+  - Theme: General usage question or error.
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/67
+- **#75** userGWAS error: crossprod(wls.diff, wls.v) : non-conformable arguments (2 comment(s), updated 2025-01-13T06:01:40Z)
+  - Theme: userGWAS errors / dimension mismatches.
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/75
+- **#80** error when run usermodel (2 comment(s), updated 2024-11-07T14:47:58Z)
+  - Theme: usermodel issues (ordering, singularity, errors).
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/80
+- **#109** How to download full reference set (2 comment(s), updated 2025-05-19T23:53:26Z)
+  - Theme: General usage question or error.
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/109
+- **#97** Preparing sumstats function error (2 comment(s), updated 2025-01-16T20:59:56Z)
+  - Theme: General usage question or error.
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/97
+- **#96** Error in crossprod(wls.diff, wls.v) : non-conformable arguments (2 comment(s), updated 2025-01-14T04:41:38Z)
+  - Theme: General usage question or error.
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/96
+- **#90** GWAS in numeric ordinal variables (2 comment(s), updated 2024-12-15T07:02:11Z)
+  - Theme: General usage question or error.
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/90
+- **#84** commonfactorGWAS running forever (2 comment(s), updated 2025-12-05T13:05:16Z)
+  - Theme: commonfactor/commonfactorGWAS failures or performance.
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/84
+- **#106** Error in UseMethod("sendData") :    no applicable method for 'sendData' applied to an object of class "NULL" (1 comment(s), updated 2025-10-19T09:10:52Z)
+  - Theme: General usage question or error.
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/106
+- **#81** non-conformable arguments when running userGWAS (1 comment(s), updated 2025-01-14T10:27:41Z)
+  - Theme: userGWAS errors / dimension mismatches.
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/81
+- **#128** Bug when using select parameter in ldsc (1 comment(s), updated 2026-02-06T19:54:51Z)
+  - Theme: LDSC issues (select, matrix dimension, rg discrepancies).
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/128
+- **#56** positiveness of the Chi-Square Difference Testing (1 comment(s), updated 2022-11-20T08:41:41Z)
+  - Theme: General usage question or error.
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/56
+- **#60** A minor confusion (1 comment(s), updated 2024-11-21T10:08:59Z)
+  - Theme: General usage question or error.
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/60
+- **#93** Your R/indexS.R:23 is missing a "}" and cannot be installed. (1 comment(s), updated 2024-12-19T15:29:17Z)
+  - Theme: General usage question or error.
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/93
+- **#105** ReorderModel Not Found (1 comment(s), updated 2025-04-14T07:33:31Z)
+  - Theme: General usage question or error.
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/105
+- **#98** Alternative solution for thread control (1 comment(s), updated 2025-03-13T07:59:28Z)
+  - Theme: General usage question or error.
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/98
+- **#73** Issue with munge Error in if (a1 != a2)  (0 comment(s), updated 2023-11-01T08:00:10Z)
+  - Theme: munge parsing/format issues.
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/73
+- **#114** Mediation model in Genomic SEM (0 comment(s), updated 2025-07-14T03:47:16Z)
+  - Theme: Mediation model usage.
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/114
+- **#123** Estimating Q_SNP in hierarchical model (0 comment(s), updated 2025-10-02T12:33:59Z)
+  - Theme: Q_SNP usage/questions.
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/123
+- **#82** How to filter SNPs using Q and Q_pval (0 comment(s), updated 2024-07-18T14:22:18Z)
+  - Theme: General usage question or error.
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/82
+- **#124** question regarding genetic correlation matrices (0 comment(s), updated 2025-11-06T15:19:21Z)
+  - Theme: General usage question or error.
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/124
+- **#112** Q_SNP heterogeneity (0 comment(s), updated 2025-07-02T15:16:31Z)
+  - Theme: Q_SNP usage/questions.
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/112
+- **#118** Sample size of SEM (0 comment(s), updated 2025-08-04T07:12:17Z)
+  - Theme: General usage question or error.
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/118
+- **#52** Error in commonfactorGWAS::Fehler in serialize(data, node$con, xdr = FALSE) (0 comment(s), updated 2022-07-29T13:42:54Z)
+  - Theme: commonfactor/commonfactorGWAS failures or performance.
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/52
+- **#40** Easy way to extract pairwise correlations from HDL? (0 comment(s), updated 2021-12-01T05:53:59Z)
+  - Theme: HDL questions/usage.
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/40
+- **#85** GWAS by subtraction Error (0 comment(s), updated 2024-08-06T03:05:18Z)
+  - Theme: General usage question or error.
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/85
+- **#69** Lavaan warnings (0 comment(s), updated 2023-09-19T08:18:06Z)
+  - Theme: General usage question or error.
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/69
+- **#59** EFA problems (0 comment(s), updated 2023-01-13T06:26:39Z)
+  - Theme: General usage question or error.
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/59
+- **#62** Improve documentation about `usermodel` and `lavaan` variable reordering (0 comment(s), updated 2023-01-30T19:34:52Z)
+  - Theme: usermodel issues (ordering, singularity, errors).
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/62
+- **#117** lavaan->lav_object_post_check(): some estimated ov variances are negative (0 comment(s), updated 2025-07-23T08:38:17Z)
+  - Theme: General usage question or error.
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/117
+- **#77** Which parameter can I use?(logistic regression or linear mixed model) (0 comment(s), updated 2024-04-19T13:11:52Z)
+  - Theme: General usage question or error.
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/77
+- **#76** Negative CFI (0 comment(s), updated 2024-03-20T15:58:43Z)
+  - Theme: CFI behavior questions.
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/76
+- **#74** recommended parameters to speed up the computation in fourth part (0 comment(s), updated 2023-11-28T13:34:24Z)
+  - Theme: General usage question or error.
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/74
+- **#115** Question about compatibility of LMM GWAS output with Genomic SEM (0 comment(s), updated 2025-07-19T19:10:35Z)
+  - Theme: General usage question or error.
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/115
+- **#107** Listing traits in unstandardized loading size order (0 comment(s), updated 2025-05-16T07:29:01Z)
+  - Theme: General usage question or error.
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/107
+- **#94** Question about TFModel (0 comment(s), updated 2024-12-26T09:10:58Z)
+  - Theme: TFModel questions.
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/94
+- **#89** Error: File rs201725126 passed to ref does not exist (0 comment(s), updated 2024-12-05T13:51:53Z)
+  - Theme: General usage question or error.
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/89
+- **#88** Matrix operation dimension issue of function ldsc (0 comment(s), updated 2024-11-27T02:21:22Z)
+  - Theme: LDSC issues (select, matrix dimension, rg discrepancies).
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/88
+- **#92** Some problems in the process of using T-SEM (0 comment(s), updated 2024-12-17T08:11:07Z)
+  - Theme: T-SEM usage questions.
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/92
+- **#102** Questions about transferring factor models (0 comment(s), updated 2025-03-10T02:08:20Z)
+  - Theme: General usage question or error.
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/102
+- **#103** Conflicting comma, tab, space delimiters in summary stats breaks the munge function. (0 comment(s), updated 2025-03-19T18:01:27Z)
+  - Theme: munge parsing/format issues.
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/103
+- **#104** Questions about the directions on GWAS Summary Statistics (0 comment(s), updated 2025-03-26T02:32:53Z)
+  - Theme: General usage question or error.
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/104
+- **#99** GenomicSEM for pqtl (0 comment(s), updated 2025-01-21T05:35:06Z)
+  - Theme: General usage question or error.
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/99
+- **#101** Is GenomicSEM suitable for WES analysis? (0 comment(s), updated 2025-02-28T13:54:21Z)
+  - Theme: General usage question or error.
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/101
+- **#127** Discrepancy in genetic correlation (rg) estimates between HDL and LDSC using identical summary statistics and effective sample sizes (0 comment(s), updated 2026-01-06T00:31:49Z)
+  - Theme: LDSC issues (select, matrix dimension, rg discrepancies).
+  - URL: https://github.com/GenomicSEM/GenomicSEM/issues/127
+
+## Cross-Issue Themes / Lessons
+- **Model specification errors are common** (typos, missing SNP regression). Clear parser errors and validation help a lot.
+- **Matrix singularity/tolerance** appears repeatedly; explicit diagnostics and optional tolerances are valuable.
+- **P-value underflow** can silently drop SNPs; robust parsing and output handling is important.
+- **Performance/HPC** questions recur; thread control tips and chunking guidance should be documented.
+- **Scaling/identification** affects implied sample size and interpretation; make this explicit in docs.

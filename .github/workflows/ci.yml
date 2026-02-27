@@ -1,0 +1,58 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+env:
+  CARGO_TERM_COLOR: always
+  RUST_BACKTRACE: 1
+  CARGO_INCREMENTAL: "0"
+  OPENBLAS_TARGET: "SSE_GENERIC"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy, rustfmt
+
+      - name: Cache Rust build artifacts
+        uses: Swatinem/rust-cache@v2
+        with:
+          env-vars: OPENBLAS_TARGET
+          cache-on-failure: true
+
+      - name: Install BLAS dependencies
+        run: sudo apt-get update && sudo apt-get install -y cmake gfortran libopenblas-dev pkg-config
+
+      - name: cargo fmt
+        run: cargo fmt --check
+
+      - name: cargo clippy
+        run: cargo clippy --release -- -D warnings
+
+      - name: cargo test
+        run: cargo test --release
+
+      - name: Dump OpenBLAS build logs on failure
+        if: failure()
+        run: |
+          echo "Searching for OpenBLAS build logs..."
+          find target -type f \( -name out.log -o -name err.log \) -print || true
+          for f in $(find target -type f \( -name out.log -o -name err.log \) -print); do
+            echo "===== $f ====="
+            tail -n 200 "$f" || true
+          done
+          if [ -d "$HOME/.local/share" ]; then
+            find "$HOME/.local/share" -type f \( -name out.log -o -name err.log \) -print || true
+            for f in $(find "$HOME/.local/share" -type f \( -name out.log -o -name err.log \) -print); do
+              echo "===== $f ====="
+              tail -n 200 "$f" || true
+            done
+          fi

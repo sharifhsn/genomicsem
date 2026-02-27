@@ -1,0 +1,12 @@
+/target
+*.bed
+*.bim
+*.fam
+*.sumstats
+*.log
+/tmp/
+
+.env
+data/
+
+*.sh

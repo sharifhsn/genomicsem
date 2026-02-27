@@ -1,0 +1,41 @@
+[package]
+name = "lavaan"
+version = "0.1.0"
+edition = "2024"
+description   = "Internal SEM engine used by GenomicSEM"
+license       = "GPL-3.0-only"
+authors       = ["Sharif Haason"]
+repository    = "https://github.com/sharifhsn/GenomicSEM"
+homepage      = "https://github.com/sharifhsn/GenomicSEM"
+documentation = "https://github.com/sharifhsn/GenomicSEM#readme"
+readme        = "README.md"
+keywords      = ["sem", "statistics"]
+categories    = ["science"]
+
+[dependencies]
+anyhow = "1.0"
+chumsky = { version = "0.12.0", features = ["docsrs", "pratt", "regex", "serde"] }
+ndarray = "0.16"
+ndarray-linalg = { version = "0.17", default-features = false }
+nlopt = "0.8.1"
+rayon = "1"
+statrs = "0.18"
+thiserror = "2.0"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+[features]
+# Default: use system OpenBLAS (via pkg-config).
+default = ["blas-openblas-system"]
+
+# Static OpenBLAS (build from source via openblas-src).
+blas-openblas-static = [
+  "ndarray-linalg/blas",
+  "ndarray-linalg/openblas-static",
+]
+
+# System OpenBLAS (use pkg-config, no source build). Intended for CI or HPC.
+blas-openblas-system = [
+  "ndarray-linalg/blas",
+  "ndarray-linalg/openblas-system",
+]

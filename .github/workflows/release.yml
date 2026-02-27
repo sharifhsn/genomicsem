@@ -1,0 +1,122 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+env:
+  CARGO_TERM_COLOR: always
+  OPENBLAS_TARGET: "SSE_GENERIC"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-22.04
+            target: x86_64-unknown-linux-gnu
+            artifact: genomicsem_linux-x86_64
+            archive_ext: tar.gz
+            sha_cmd: sha256sum
+          - os: macos-14
+            target: aarch64-apple-darwin
+            artifact: genomicsem_macos-aarch64
+            archive_ext: tar.gz
+            sha_cmd: shasum -a 256
+          - os: windows-latest
+            target: x86_64-pc-windows-msvc
+            artifact: genomicsem_windows-x86_64
+            archive_ext: zip
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.target }}
+
+      - name: Setup vcpkg (Windows)
+        if: startsWith(matrix.os, 'windows')
+        uses: lukka/run-vcpkg@v11
+        with:
+          vcpkgGitCommitId: "7ab2f5d542e36af36d14decc06a59a26a939f818"
+
+      - name: Install OpenBLAS (Windows)
+        if: startsWith(matrix.os, 'windows')
+        shell: pwsh
+        working-directory: ${{ github.workspace }}\vcpkg
+        env:
+          VCPKG_DEFAULT_TRIPLET: x64-windows
+        run: .\vcpkg.exe install openblas:x64-windows clapack:x64-windows --classic --disable-metrics
+
+      - name: Install build dependencies (Linux)
+        if: startsWith(matrix.os, 'ubuntu')
+        run: sudo apt-get update && sudo apt-get install -y cmake gfortran pkg-config libopenblas-dev
+
+      - name: Install build dependencies (macOS)
+        if: startsWith(matrix.os, 'macos')
+        run: brew install cmake gcc openblas pkg-config
+
+      - name: Build (Linux/macOS)
+        if: "!startsWith(matrix.os, 'windows')"
+        env:
+          PKG_CONFIG_PATH: /opt/homebrew/opt/openblas/lib/pkgconfig:/usr/local/opt/openblas/lib/pkgconfig
+        run: cargo build --release --locked --target ${{ matrix.target }} --no-default-features --features blas-openblas-system
+
+      - name: Build (Windows)
+        if: startsWith(matrix.os, 'windows')
+        env:
+          VCPKG_DEFAULT_TRIPLET: x64-windows
+          VCPKG_ROOT: ${{ github.workspace }}\vcpkg
+          VCPKGRS_DYNAMIC: "1"
+          VCPKGRS_TRIPLET: x64-windows
+        run: cargo build --release --locked --target ${{ matrix.target }} --no-default-features --features blas-openblas-system
+
+      - name: Package (Linux/macOS)
+        if: "!startsWith(matrix.os, 'windows')"
+        run: |
+          mkdir -p dist
+          cp target/${{ matrix.target }}/release/genomicsem dist/
+          cp LICENSE README.md dist/
+          tar -czf dist/${{ matrix.artifact }}.${{ matrix.archive_ext }} -C dist genomicsem LICENSE README.md
+          ${{ matrix.sha_cmd }} dist/${{ matrix.artifact }}.${{ matrix.archive_ext }} > dist/${{ matrix.artifact }}.${{ matrix.archive_ext }}.sha256
+
+      - name: Package (Windows)
+        if: startsWith(matrix.os, 'windows')
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force dist | Out-Null
+          Copy-Item target\${{ matrix.target }}\release\genomicsem.exe dist\
+          Copy-Item -Path LICENSE,README.md -Destination dist\
+          Copy-Item vcpkg\installed\x64-windows\bin\*.dll dist\
+          Compress-Archive -Path dist\* -DestinationPath "dist\${{ matrix.artifact }}.${{ matrix.archive_ext }}"
+          (Get-FileHash "dist\${{ matrix.artifact }}.${{ matrix.archive_ext }}" -Algorithm SHA256).Hash.ToLower() + "  ${{ matrix.artifact }}.${{ matrix.archive_ext }}" | Out-File -Encoding ASCII "dist\${{ matrix.artifact }}.${{ matrix.archive_ext }}.sha256"
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact }}
+          path: |
+            dist/${{ matrix.artifact }}.${{ matrix.archive_ext }}
+            dist/${{ matrix.artifact }}.${{ matrix.archive_ext }}.sha256
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: dist
+          merge-multiple: true
+
+      - name: Publish release assets
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*

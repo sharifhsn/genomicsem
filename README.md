@@ -18,6 +18,7 @@ The rewrite is built as a Cargo workspace:
 
 Suggested system packages:
 - Debian/Ubuntu: `sudo apt-get update && sudo apt-get install -y build-essential cmake gfortran pkg-config libopenblas-dev libbz2-dev`
+- RHEL/Fedora/CentOS: `sudo dnf install -y gcc gcc-c++ make cmake gcc-gfortran pkgconfig openblas-devel bzip2-devel`
 - macOS (Homebrew): `brew install gcc cmake pkg-config openblas bzip2`
 - macOS (Homebrew, if needed): `export PKG_CONFIG_PATH="/opt/homebrew/opt/openblas/lib/pkgconfig:/usr/local/opt/openblas/lib/pkgconfig"`
 
